@@ -14,4 +14,20 @@ class Tanggapan extends Model
         'id_pengaduan', 'tgl_tanggapan', 'tanggapan', 'id_petugas', 'created_at', 'updated_at'
     ];
     public $timestamps = true;
+
+    /**
+     * Relasi: Tanggapan milik satu pengaduan
+     */
+    public function pengaduan()
+    {
+        return $this->belongsTo(Pengaduan::class, 'id_pengaduan', 'id_pengaduan');
+    }
+
+    /**
+     * Relasi: Tanggapan milik satu petugas
+     */
+    public function petugas()
+    {
+        return $this->belongsTo(Petugas::class, 'id_petugas', 'id_petugas');
+    }
 }

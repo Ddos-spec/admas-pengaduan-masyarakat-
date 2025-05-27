@@ -1,8 +1,21 @@
 @extends('layouts.guest')
 
 @section('content')
-<div class="container">
-    <h2>Login Masyarakat</h2>
-    <!-- Form login -->
+<div class="container mt-5" style="max-width:400px">
+    <h2 class="mb-4">Login Masyarakat</h2>
+    <form method="POST" action="{{ route('login') }}">
+        @csrf
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" id="username" name="username" value="{{ old('username') }}" required autofocus>
+            @error('username')<div class="text-danger">{{ $message }}</div>@enderror
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" name="password" required>
+            @error('password')<div class="text-danger">{{ $message }}</div>@enderror
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Login</button>
+    </form>
 </div>
 @endsection

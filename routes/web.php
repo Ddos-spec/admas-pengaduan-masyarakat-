@@ -20,12 +20,8 @@ Route::get('/', function () {
 // Route untuk login masyarakat
 Route::view('/login', 'auth.login')->name('login');
 
-// Route dashboard masyarakat
-Route::view('/masyarakat/dashboard', 'masyarakat.dashboard')->name('masyarakat.dashboard');
-
-// Route pengaduan masyarakat
-Route::prefix('masyarakat/pengaduan')->group(function () {
-    Route::view('/', 'masyarakat.pengaduan.index')->name('masyarakat.pengaduan.index');
-    Route::view('/create', 'masyarakat.pengaduan.create')->name('masyarakat.pengaduan.create');
-    Route::view('/{id}', 'masyarakat.pengaduan.show')->name('masyarakat.pengaduan.show');
+// Route group untuk masyarakat (middleware auth:masyarakat)
+Route::middleware(['auth:masyarakat'])->group(function () {
+    Route::get('dashboard', [App\Http\Controllers\Masyarakat\DashboardController::class, 'index'])->name('dashboard');
+    Route::resource('pengaduan', App\Http\Controllers\Masyarakat\PengaduanController::class);
 });
