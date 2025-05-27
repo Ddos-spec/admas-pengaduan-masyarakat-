@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container mt-5" style="max-width:400px">
-    <h2 class="mb-4">Login Masyarakat</h2>
+    <h2 class="mb-4">Sign In Masyarakat</h2>
     <form method="POST" action="{{ route('login') }}">
         @csrf
         <div class="mb-3">
@@ -15,7 +15,10 @@
             <input type="password" class="form-control" id="password" name="password" required>
             @error('password')<div class="text-danger">{{ $message }}</div>@enderror
         </div>
-        <button type="submit" class="btn btn-primary w-100">Login</button>
+        <button type="submit" class="btn btn-primary w-100">Sign In</button>
     </form>
+    <div class="mt-3 text-center">
+        <small>Belum punya akun? <a href="#">Register</a></small>
+    </div>
 </div>
 @endsection
