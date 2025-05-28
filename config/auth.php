@@ -14,8 +14,8 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
-        'passwords' => 'users',
+        'guard' => 'masyarakat',
+        'passwords' => 'masyarakat',
     ],
 
     /*
@@ -39,6 +39,10 @@ return [
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
+        ],
+        'masyarakat' => [
+            'driver' => 'session',
+            'provider' => 'masyarakat',
         ],
     ],
 
@@ -64,11 +68,10 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'masyarakat' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Masyarakat::class,
+        ],
     ],
 
     /*
@@ -90,6 +93,12 @@ return [
         'users' => [
             'provider' => 'users',
             'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'masyarakat' => [
+            'provider' => 'masyarakat',
+            'table' => 'password_resets_masyarakat',
             'expire' => 60,
             'throttle' => 60,
         ],

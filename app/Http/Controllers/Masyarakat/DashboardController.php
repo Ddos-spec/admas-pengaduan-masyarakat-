@@ -14,7 +14,10 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
+        $user = Auth::guard('masyarakat')->user();
+        if (!$user) {
+            return redirect()->route('login')->with('error', 'Anda harus login terlebih dahulu.');
+        }
         $jumlah_pengaduan = Pengaduan::where('nik', $user->nik)->count();
         $jumlah_selesai = Pengaduan::where('nik', $user->nik)->where('status', 'selesai')->count();
         $jumlah_proses = Pengaduan::where('nik', $user->nik)->where('status', 'proses')->count();

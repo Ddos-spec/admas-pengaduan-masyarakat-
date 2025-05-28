@@ -23,6 +23,11 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
+                // Redirect to masyarakat dashboard if authenticated as masyarakat
+                if ($guard === 'masyarakat') {
+                    return redirect(route('masyarakat.dashboard'));
+                }
+                // Default redirect for other guards (e.g., web for admin/petugas if implemented)
                 return redirect(RouteServiceProvider::HOME);
             }
         }

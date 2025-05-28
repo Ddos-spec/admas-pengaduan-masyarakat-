@@ -15,7 +15,11 @@ class PengaduanController extends Controller
      */
     public function index()
     {
-        $pengaduan = Pengaduan::where('nik', Auth::user()->nik)
+        $user = Auth::guard('masyarakat')->user();
+        if (!$user) {
+            return redirect()->route('login')->with('error', 'Anda harus login terlebih dahulu.');
+        }
+        $pengaduan = Pengaduan::where('nik', $user->nik)
             ->orderBy('tgl_pengaduan', 'desc')->get();
         return view('masyarakat.pengaduan.index', compact('pengaduan'));
     }
@@ -33,13 +37,17 @@ class PengaduanController extends Controller
      */
     public function store(Request $request)
     {
+        $user = Auth::guard('masyarakat')->user();
+        if (!$user) {
+            return redirect()->route('login')->with('error', 'Anda harus login terlebih dahulu.');
+        }
         $request->validate([
             'isi_laporan' => 'required',
             'foto' => 'nullable|image|max:2048',
         ]);
         $data = [
             'tgl_pengaduan' => now(),
-            'nik' => Auth::user()->nik,
+            'nik' => $user->nik,
             'isi_laporan' => $request->isi_laporan,
             'status' => '0',
         ];
@@ -47,7 +55,7 @@ class PengaduanController extends Controller
             $data['foto'] = $request->file('foto')->store('pengaduan', 'public');
         }
         Pengaduan::create($data);
-        return redirect()->route('pengaduan.index')->with('success', 'Pengaduan berhasil dikirim!');
+        return redirect()->route('masyarakat.pengaduan.index')->with('success', 'Pengaduan berhasil dikirim!');
     }
 
     /**

@@ -18,7 +18,7 @@
         <button type="submit" class="btn btn-primary w-100">Sign In</button>
     </form>
     <div class="mt-3 text-center">
-        <small>Belum punya akun? <a href="#">Register</a></small>
+        <small>Belum punya akun? <a href="{{ route('register') }}">Register di sini</a></small>
     </div>
 </div>
 @endsection

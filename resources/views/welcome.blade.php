@@ -16,7 +16,7 @@
         <div class="card shadow p-4" style="max-width: 420px; width:100%">
             <h1 class="mb-3 text-center">Selamat Datang di <span class="text-primary">ADMAS</span></h1>
             <p class="text-center mb-4">Aplikasi Pengaduan Masyarakat berbasis web.</p>
-            <a href="{{ route('login') }}" class="btn btn-primary w-100">Login Masyarakat</a>
+            <a href="{{ route('login') }}" class="btn btn-primary w-100">Login atau Register Masyarakat</a>
         </div>
     </div>
     <footer class="text-center py-3 text-muted small">
