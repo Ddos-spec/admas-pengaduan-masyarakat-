@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADMAS - Aplikasi Pengaduan Masyarakat</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="bg-light">
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
@@ -61,5 +61,6 @@
     <footer class="text-center py-3 text-muted small mt-5">
         &copy; {{ date('Y') }} ADMAS - Aplikasi Pengaduan Masyarakat
     </footer>
+    <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
