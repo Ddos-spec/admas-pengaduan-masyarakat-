@@ -31,7 +31,7 @@ if (file_exists($maintenance = __DIR__.'/../storage/framework/maintenance.php'))
 |
 */
 
-require __DIR__.'/../vendor/autoload.php';
+require __DIR__.'/../../vendor/autoload.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -45,6 +45,12 @@ require __DIR__.'/../vendor/autoload.php';
 */
 
 $app = require_once __DIR__.'/../bootstrap/app.php';
+
+// Set public path for assets if your public folder is moved outside of 'src'
+// If public_html is at the same level as src, and src contains laravel project root files
+// $app->bind('path.public', function() {
+//     return realpath(__DIR__.'/../../public_html');
+// });
 
 $kernel = $app->make(Kernel::class);
 

@@ -17,7 +17,10 @@ define('LARAVEL_START', microtime(true));
 
 require __DIR__.'/vendor/autoload.php';
 
-$app = require_once __DIR__.'/bootstrap/app.php';
+// Adjust bootstrap/app.php path if it's moved
+$app = require_once __DIR__.'/src/bootstrap/app.php';
+
+
 
 /*
 |--------------------------------------------------------------------------
